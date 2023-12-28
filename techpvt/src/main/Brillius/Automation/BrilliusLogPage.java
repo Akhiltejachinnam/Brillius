@@ -1,11 +1,13 @@
 package Practice.Automation;
 
 import org.apache.commons.collections.map.HashedMap;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 
 import com.project.utill.CommonFunction;
 import com.project.utill.LoggingClass;
@@ -13,28 +15,63 @@ import com.relevantcodes.extentreports.LogStatus;
 
 public class BrilliusLogPage {
 
-	@FindBy(how = How.XPATH, using = "//a[text()='Log Promise']")
-	private WebElement logPromise;
+	@FindBy(how = How.XPATH, using = "//input[@id='username']")
+	private WebElement username;
 
-	@FindBy(how = How.XPATH, using = "//a[text()='Promises From']")
-	private WebElement promissesFrom;
+	@FindBy(how = How.XPATH, using = "//input[@id='password']")
+	private WebElement logpassword;
 
-	@FindBy(how = How.XPATH, using = "//a[text()='My Account']")
-	private WebElement myAccount;
+	@FindBy(how = How.XPATH, using = "//button[contains(text(),'Login')]")
+	private WebElement login;
 
-	@FindBy(how = How.XPATH, using = "//a[text()='Promises To']")
-	private WebElement promissesTo;
+	@FindBy(how = How.XPATH, using = "//button[contains(text(),'User Management')]")
+	private WebElement AddUser;
 
-	@FindBy(how = How.XPATH, using = "//*[@class='lightgrey']/b[text()='HOME']")
-	private WebElement home;
+	@FindBy(how = How.XPATH, using = "//button[contains(text(),'User Management')]")
+	private WebElement Userregistration;
 
-	@FindBy(how = How.XPATH, using = "//*[@class='lightgrey']/b[text()='LOGOUT']")
-	private WebElement logout;
+	@FindBy(how = How.XPATH, using = "//input[@id='firstname']")
+	private WebElement fname;
+	
+	@FindBy(how = How.XPATH, using = "//input[@id='lastname']")
+	private WebElement lname;
+	
+	@FindBy(how = How.XPATH, using = "//input[@id='email_address']")
+	private WebElement Email;
+	
+	@FindBy(how = How.XPATH, using = "//input[@id='username']")
+	private WebElement username;
+	
+	@FindBy(how = How.XPATH, using = "//input[@id='password']")
+	private WebElement cpassword;
+	
+	@FindBy(how = How.XPATH, using = "//input[@id='contactnumber']")
+	private WebElement cnumber;
+	
+	@FindBy(Select rolelist = new Select(driver.findElement(By.id("usertype"))))
+	rolelist.selectByVisibleText(role);
+	private WebElement usertype;
+	
+	@FindBy(how = How.XPATH, using = "//button[contains(text(),'Register')]")
+	private WebElement Register;
+	
+	
+	@FindBy(how = How.XPATH, using = "//button[contains(text(),'Back to Home')]")
+	private WebElement backtohome;
+	
+	@FindBy(how = How.XPATH, using = "//button[contains(text(),'Dashboard')]")
+	private WebElement Dashboard;
+	
+	WebElement selectElement = driver.findElement(By.xpath("//option[contains(text(),'Select User')]"));
+    Select dropdown = new Select(selectElement);
+    dropdown.selectByVisibleText("Dravid");
+	
 
-	public LogPromisePage navigateToLogPromisePage(WebDriver driver, HashedMap testData, String testCaseName) {
+
+	public LogBrilliusPage navigateToLogBrilliusPage(WebDriver driver, HashedMap testData, String testCaseName) {
 
 		CommonFunction.clickButton(driver, logBrillius, "Log Brillius");
-		LogPromisePage LogBrilliusPage = PageFactory.initElements(driver, LogPromisePage.class);
+		LogPromisePage LogBrilliusPage = PageFactory.initElements(driver, LogBrilliusPage.class);
 		return logBrilliusPage;
 	}
 
